@@ -1,0 +1,142 @@
+
+@for $i from 1 through 200 {
+	$absoluteClassPostFix:$i*5+'px';
+	$percentClassPostFix:($i / 2);
+	$percentClassPostFixValue:$i/2;
+	@if ($i % 2 > 0) {
+		$percentClassPostFix:($i / 2 - 0.5) +'p5';
+	}
+
+	.w-#{$absoluteClassPostFix} {
+		width:#{$i*5}px !important;
+	}
+	.w-#{$percentClassPostFix} {
+      	width:#{$percentClassPostFixValue}%!important;
+	}
+	.h-#{$absoluteClassPostFix} {
+		height:#{$i*5}px !important;
+	}
+	.h-#{$percentClassPostFix} {
+      	height:#{$percentClassPostFixValue}%!important;
+	}
+}
+
+.t{
+	&-center{
+  		text-align: center !important;
+	}
+	&-middle{
+		vertical-align: middle !important;
+	}
+	&-right{
+	  text-align: right !important;
+	}
+	&-left{
+	  text-align: left !important;
+	}
+}
+
+.f{
+	&-left{
+		float: left !important;
+	}
+	&-right{
+		float: right !important;
+	}
+	&-bold{
+		font-weight: bold !important;
+	}
+	@for $i from 6 through 25 {
+		&-s#{$i}px{
+			font-size: #{$i}px !important;
+		}
+	}
+}
+
+.c{
+	&-pointer{
+		cursor:pointer !important;
+	}
+}
+.m{
+	&-auto{
+		margin:auto !important;
+	}
+}
+.p{
+	&-auto{
+		padding:auto !important;
+	}
+	&-pad1{
+		padding: 5px 0 5px 5px;
+	}
+	&-absolute{
+		position: absolute !important;
+	}
+}
+.o{
+	&-auto{
+		overflow: auto !important;
+	}
+}
+.active-icon{
+	font-size:20px;
+	cursor:pointer !important;
+}
+
+.in-progress-cursor{
+	cursor: progress !important;
+	&:disabled{
+		cursor: progress !important;
+	}
+}
+
+
+
+/*transition css*/
+.component-fade-enter-active{
+  transition: opacity .6s ease;
+}
+.component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to{
+  opacity: 0;
+}
+
+
+.component-fade-slow-enter-active{
+  transition: opacity .4s ease;
+}
+.component-fade-slow-leave-active {
+  transition: opacity .2s ease;
+}
+.component-fade-slow-enter, .component-fade-leave-to{
+  opacity: 0;
+}
+
+.bounce-enter-active {
+  animation: bounce-in .8s;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.slide-fade-enter-active {
+  transition: all .4s ease;
+}
+.slide-fade-leave-active {
+  transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to{
+  transform: translateX(40px);
+  opacity: 0;
+}

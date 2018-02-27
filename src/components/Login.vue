@@ -1,0 +1,77 @@
+<template>
+  <!-- Configure "view" prop for QLayout -->
+  <q-layout>
+    <div class="content-center">
+    	<div class="row  items-center">  
+    		<div class="col-4"></div>
+	    	<div class="col-4 justify-center">
+			  	<q-input 
+			  		v-model="loginData.username"
+			  		float-label="Nombre de usuario o correo electronico" 
+			  	/>
+			  	<q-input 
+			  		v-model="loginData.password" 
+			  		type="password"
+			  		float-label="Contraseña" 
+			  	/>
+			  	<q-btn class="primary" icon="person" big v-on:click="services.general.login(loginData.username,loginData.password)">Login</q-btn>
+			</div>
+    		<div class="col-4"></div>
+		</div>
+    </div>
+  </q-layout>
+</template>
+
+<script>
+import {
+  QBtn,
+  QCollapsible,
+  QIcon,
+  QInnerLoading,
+  QInput,
+  QItemMain,
+  QItemSide,
+  QLayout,
+  QSideLink,
+  QSpinnerGears,
+  QToolbar,
+  QToolbarTitle,
+  QTransition,
+} from 'quasar'
+import CvBaseCrud from 'crudvuel/customs/components/resource/CvBaseCrud.vue';
+
+export default {
+  extends: CvBaseCrud,
+  name:"login",
+  components: {
+    QBtn,
+    QCollapsible,
+    QIcon,
+    QInnerLoading,
+    QInput,
+    QItemMain,
+    QItemSide,
+    QLayout,
+    QSideLink,
+    QSpinnerGears,
+    QToolbar,
+    QToolbarTitle,
+    QTransition,
+  },
+  data:function(){
+      return {
+          singularResource:"user",
+          pluralResource  :"users",
+          loginData       :{username:null,password:null},
+          user            :{},
+          users           :[]
+      }
+  },
+  created:function(){
+    console.log(this.services.general);
+  },
+}
+</script>
+
+<style>
+</style>

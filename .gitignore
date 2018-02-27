@@ -1,0 +1,11 @@
+.DS_Store
+.thumbs.db
+node_modules/
+dist/
+npm-debug.log*
+cordova/platforms
+cordova/plugins
+config/dev.env.js
+config/prod.env.js
+package-lock.json
+cordova/package-lock.json
