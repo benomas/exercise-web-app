@@ -6,43 +6,34 @@ import CvShow from 'components/resources/ex-items/CvShow.vue';
 import ItemService from 'services/ExItem';
 
 let resourceName = "ex-items";
-let resourcePrefix = "ex-lists/:exList";
 
 export default function(globals){
 
 	let resource = new CvResourceMap({
-		name              : resourceName,
-		rowsLabel         : "Items",
-		rowLabel          : "Item",
-		icon              : "people",
-		path              : resourcePrefix+"/"+resourceName,
-		getSuccessMessage : "",
-		getErrorMessage   : "No se ha encontrado el recurso",
-		setSuccessMessage : "",
-		setErrorMessage   : "",
-		setCancelMessage  : "Acción cancelada",
-		crudServices      : new ItemService(globals["cvComunicator"],resourceName),
+		name             : resourceName,
+		rowsLabel        : "Items",
+		rowLabel         : "Item",
+		icon             : "people",
+		path             : resourceName,
+		getSuccessMessage: "",
+		getErrorMessage  : "No se ha encontrado el recurso",
+		setSuccessMessage: "",
+		setErrorMessage  : "",
+		setCancelMessage : "Acción cancelada",
+		crudServices     : new ItemService(globals["cvComunicator"],resourceName),
+		nextLabel        : "Guardar",
+		backLabel        : "Cancelar",
 	});
 	resource.setActions([
 		{
 			name      : "index",
-			label     : "Listado",
+			label     : "Items",
 			icon      : "",
 			getService: resource.crudServices.index,
 			resource  : resource,
 			path      : resource.path+"",
 			component : CvIndex,
 			type      : "rows",
-		},
-		{
-			name       : "show",
-			label      : "Item",
-			icon       : "",
-			getService : resource.crudServices.show,
-			resource   : resource,
-			path       : resource.path+"/:id/show",
-			urlParams  : ["id"],
-			component  : CvShow,
 		},
 		{
 			name              : "create",
@@ -57,6 +48,20 @@ export default function(globals){
 			component         : CvCreate,
 		},
 		{
+			name         : "show",
+			label        : "Item",
+			icon         : "",
+			getService   : resource.crudServices.show,
+			resource     : resource,
+			path         : resource.path+"/:item",
+			urlParams    : ["item"],
+			component    : CvShow,
+			disableFields: true,
+			backLabel    : "Regresar",
+			nextLabel    : null,
+			isParentRoute: true,
+		},
+		{
 			name              : "edit",
 			label             : "Editar item",
 			icon              : "",
@@ -66,8 +71,8 @@ export default function(globals){
 			getService        : resource.crudServices.show,
 			setService        : resource.crudServices.update,
 			resource          : resource,
-			path              : resource.path+"/:id/edit",
-			urlParams         : ["id"],
+			path              : resource.path+"/:item/edit",
+			urlParams         : ["item"],
 			component         : CvEdit,
 		},
 		{
@@ -80,8 +85,8 @@ export default function(globals){
 			getService        : resource.crudServices.show,
 			setService        : resource.crudServices.destroy,
 			resource          : resource,
-			path              : resource.path+"/:id/delete",
-			urlParams         : ["id"],
+			path              : resource.path+"/:item/delete",
+			urlParams         : ["item"],
 			component         : null,
 		},
 		{
@@ -93,8 +98,8 @@ export default function(globals){
 			setCancelMessage  : "Se ha cancelado la activación del item",
 			setService        : resource.crudServices.activate,
 			resource          : resource,
-			path              : resource.path+"/:id/activate",
-			urlParams         : ["id"],
+			path              : resource.path+"/:item/activate",
+			urlParams         : ["item"],
 			component         : null,
 		},
 		{
@@ -106,8 +111,8 @@ export default function(globals){
 			setCancelMessage  : "Se ha cancelado la desactivación del item",
 			setService        : resource.crudServices.deactivate,
 			resource          : resource,
-			path              : resource.path+"/:id/deactivate",
-			urlParams         : ["id"],
+			path              : resource.path+"/:item/deactivate",
+			urlParams         : ["item"],
 			component         : null,
 		}
 	]);

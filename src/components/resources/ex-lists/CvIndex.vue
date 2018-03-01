@@ -71,15 +71,26 @@
     </template>
     <!-- cv-grid-extra-actions-->
     <template v-if="1" slot="extra-actions-slot" slot-scope="props">
+      <q-btn 
+        icon="reorder" 
+        @click="$router.push('ex-lists/'+props.slotRow.id+'/ex-items')"
+        color="warning"
+        push
+        small
+        :title="'acceder a items'"
+        v-cv-in-progress="isSynchronizing(props.slotRow)"
+        :disabled="isSynchronizing(props.slotRow)"
+      >
+      </q-btn>
     </template>
   </cv-quasar-table-grid-index>
 </template>
 <script>
 import CvIndex from 'crudvuel/customs/components/resource/CvIndex.vue';
 import CvQuasarTableGridIndex from 'crudvuel/customs/components/resource/themes/quasar/CvQuasarTableGridIndex.vue';
-import {QIcon} from 'quasar'
+import {QIcon,QBtn} from 'quasar'
 export default {
   extends: CvIndex,
-  components: {CvQuasarTableGridIndex,QIcon}
+  components: {CvQuasarTableGridIndex,QIcon,QBtn}
 }
 </script>

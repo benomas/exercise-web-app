@@ -14,6 +14,7 @@
         suffix="" 
         v-model.trim="row.first_name"
         clearable
+        :readonly="cDisableFields"
       />
     </q-field>
     <q-field
@@ -26,6 +27,7 @@
         suffix="" 
         v-model.trim="row.last_name"
         clearable
+        :readonly="cDisableFields"
       />
     </q-field>
     <q-field
@@ -38,6 +40,7 @@
         suffix="" 
         v-model.trim="row.username"
         clearable
+        :readonly="cDisableFields"
       />
     </q-field>
     <q-field
@@ -50,6 +53,7 @@
         suffix="" 
         v-model.trim="row.email"
         clearable
+        :readonly="cDisableFields"
       />
     </q-field>
     <q-field
@@ -63,6 +67,7 @@
         v-model.trim="row.password"
         clearable
         type="password"
+        :readonly="cDisableFields"
       />
     </q-field>
     <q-field
@@ -70,7 +75,12 @@
       :error="cvErr(errors,'active','boolean')"
       :error-label="cvErr(errors,'active')"
     >
-      <cv-q-toggle v-model="row.active" label="Activo" :left-label="true" />
+      <cv-q-toggle 
+        v-model="row.active" 
+        label="Activo" 
+        :left-label="true" 
+        :readonly="cDisableFields"
+      />
     </q-field>
     <q-field
       class="col-lg-12"
@@ -93,8 +103,10 @@
     </q-field>
     <div class="col-lg-12 h-50px">
     </div>
-    <cv-quasar-buttons :cv-ready="ready" @cv-cancel="cancelAction()" @cv-submit="setService()">
-    </cv-quasar-buttons>
+    <div class="col-lg-12">
+      <cv-quasar-buttons :cv-ready="ready" @cv-back="cancelAction()" @cv-next="setService()" :cv-action="action">
+      </cv-quasar-buttons>
+    </div>
   </cv-base-crud>
 </template>
 <script>

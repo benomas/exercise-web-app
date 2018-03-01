@@ -39,6 +39,7 @@ cvGlobDep.add(CvEnv,"CvEnv",new CvEnv())
 cvGlobDep.add(CvPassport,"CvPassport",new CvPassport(cvGlobDep.globals))
 cvGlobDep.add(CvComunicator,"CvComunicator",new CvComunicator(router,cvGlobDep.globals))
 let generalServices = new GeneralServices(cvGlobDep.globals);
+
 var resources={
   "users":users(cvGlobDep.globals),
   "roles":roles(cvGlobDep.globals),
@@ -47,7 +48,7 @@ var resources={
   "exItems":exItems(cvGlobDep.globals),
 }
 
-
+resources.exlists.addChild(resources.exItems);
 router.setResources(resources);
 router.loadVueRouter();
 router.linkServices(cvGlobDep.globals.cvComunicator)
@@ -75,7 +76,7 @@ import 'quasar-extras/material-icons'
 import 'quasar-extras/fontawesome'
 import 'quasar-extras/animate'
 import 'assets/styles.scss'
-
+console.log(router.VueRouter.options.routes[0].children[14].children)
 Quasar.start(() => {
   /* eslint-disable no-new */
   new Vue({

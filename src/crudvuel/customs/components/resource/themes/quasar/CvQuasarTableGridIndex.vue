@@ -68,6 +68,17 @@
               </td>
               <td class="t-center t-middle">
                 <q-btn 
+                  v-if="validateAction('show')"
+                  icon="visibility" 
+                  @click="$router.push(actionPath('show',gridRow))"
+                  color="info"
+                  push
+                  small
+                  :title="resorceAction('show').label"
+                  v-cv-in-progress="isSynchronizing(gridRow)"
+                  :disabled="isSynchronizing(gridRow)"
+                ></q-btn>  
+                <q-btn 
                   v-if="validateAction('edit')"
                   icon="edit" 
                   @click="$router.push(actionPath('edit',gridRow))"
@@ -77,7 +88,7 @@
                   :title="resorceAction('edit').label"
                   v-cv-in-progress="isSynchronizing(gridRow)"
                   :disabled="isSynchronizing(gridRow)"
-                ></q-btn>    
+                ></q-btn>  
                 <q-btn 
                   v-if="validateAction('delete')"
                   icon="delete" 
@@ -85,7 +96,7 @@
                   color="negative"
                   push
                   small
-                  :title="resorceAction('create').label"
+                  :title="resorceAction('delete').label"
                   v-cv-in-progress="isSynchronizing(gridRow)"
                   :disabled="isSynchronizing(gridRow)"
                 >

@@ -21,10 +21,18 @@
 
     <!-- Left Side Panel-->
     <div slot="left">
-      <div v-for="(resource, resourceKey) in resources" >   
-        <q-collapsible indent v-bind:label="resource.rowsLabel" closed v-bind:icon="resource.icon"> 
-          <q-side-link  v-if="resource.actions.index"  v-bind:to="(resource.actions.index.path || resource.resource)" >
-            <span><q-icon v-bind:name="resource.actions.index.icon || 'list'" />{{resource.actions.index.label || resource.listLabel}}</span>
+      <div v-for="(resourceName, resourcePosition) in menuResources" >   
+        <q-collapsible 
+          indent v-bind:label="resources[resourceName].rowsLabel" 
+          closed v-bind:icon="resources[resourceName].icon"> 
+          <q-side-link  
+            v-if="resources[resourceName].actions.index"  
+            v-bind:to="'/'+(resources[resourceName].actions.index.path || resources[resourceName].name)" >
+            <span>
+              <q-icon 
+                v-bind:name="resources[resourceName].actions.index.icon || 'list'" />
+                {{resources[resourceName].actions.index.label || resources[resourceName].listLabel}}
+            </span>
           </q-side-link>  
         </q-collapsible>
       </div>
@@ -85,7 +93,14 @@ export default {
     QSideLink,
   },
   data () {
-    return {}
+    return {
+      menuResources:[
+        "users",
+        "roles",
+        "permissions",
+        "exlists",
+      ]
+    }
   },
   mounted(){
   }

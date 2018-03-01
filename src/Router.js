@@ -54,7 +54,6 @@ export default function(){
             this.resources["roles"].getRoutes(),
             this.resources["permissions"].getRoutes(),
             this.resources["exlists"].getRoutes(),
-            this.resources["exItems"].getRoutes(),
           ),
           //children:this.loadresourcesRoutes(),
         },
