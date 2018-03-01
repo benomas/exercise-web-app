@@ -58,15 +58,15 @@
         :readonly="cDisableFields"
       />
     </q-field>
+    <div class="col-lg-12">
+      <router-view>
+      </router-view>
+    </div>
     <div class="col-lg-12 h-50px">
     </div>
     <div class="col-lg-12">
       <cv-quasar-buttons :cv-ready="ready" @cv-back="cancelAction()" @cv-next="setService()" :cv-action="action">
       </cv-quasar-buttons>
-    </div>
-    <div class="col-lg-12">
-      <router-view>
-      </router-view>
     </div>
 	</cv-base-crud>
 </template>

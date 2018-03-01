@@ -16,25 +16,9 @@
             <q-icon slot="descending-icon" name="arrow_upward"  color="positive"/>
           </cv-ord-icon>
         </th>
-        <th cv-key="name" class="cv-orderable cv-filterable cv-selectable  t-left t-middle w-22" >
-          Nombre
-          <cv-ord-icon :cv-data="props.gridData" cv-key="name">
-            <q-icon slot="orderable-icon" name="swap_vert" color="secondary"/>
-            <q-icon slot="ascending-icon" name="arrow_downward"  color="primary"/>
-            <q-icon slot="descending-icon" name="arrow_upward"  color="positive"/>
-          </cv-ord-icon>
-        </th>
-        <th cv-key="slug" class="cv-orderable cv-filterable cv-selectable  t-left t-middle w-22" >
-          Slug
-          <cv-ord-icon :cv-data="props.gridData" cv-key="slug">
-            <q-icon slot="orderable-icon" name="swap_vert" color="secondary"/>
-            <q-icon slot="ascending-icon" name="arrow_downward"  color="primary"/>
-            <q-icon slot="descending-icon" name="arrow_upward"  color="positive"/>
-          </cv-ord-icon>
-        </th>
-        <th cv-key="description" class="cv-orderable cv-filterable cv-selectable  t-left t-middle w-22" >
-          Descripción
-          <cv-ord-icon :cv-data="props.gridData" cv-key="description">
+        <th cv-key="value" class="cv-orderable cv-filterable cv-selectable  t-left t-middle w-22" >
+          Valor
+          <cv-ord-icon :cv-data="props.gridData" cv-key="value">
             <q-icon slot="orderable-icon" name="swap_vert" color="secondary"/>
             <q-icon slot="ascending-icon" name="arrow_downward"  color="primary"/>
             <q-icon slot="descending-icon" name="arrow_upward"  color="positive"/>
@@ -48,8 +32,6 @@
             <q-icon slot="descending-icon" name="arrow_upward"  color="positive"/>
           </cv-ord-icon>
         </th>
-        <th cv-key="last_name" class="cv-filterable cv-selectable" hidden>
-        </th>
     </template>
     <!-- cv-grid-extra-headers-->
     <template v-if="1" slot="extra-actions-header-slot" slot-scope="props">
@@ -60,13 +42,7 @@
         {{props.slotRow.id}}
       </td>
       <td>
-        {{props.slotRow.name}} 
-      </td>
-      <td>
-        {{props.slotRow.slug}}
-      </td>
-      <td>
-        {{props.slotRow.description}}
+        {{props.slotRow.value}} 
       </td>
     </template>
     <!-- cv-grid-extra-actions-->
@@ -80,7 +56,6 @@ import CvQuasarTableGridIndex from 'crudvuel/customs/components/resource/themes/
 import {QIcon} from 'quasar'
 export default {
   extends: CvIndex,
-  props:["exListId"],
   components: {CvQuasarTableGridIndex,QIcon}
 }
 </script>

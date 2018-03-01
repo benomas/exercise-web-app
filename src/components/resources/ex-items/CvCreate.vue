@@ -1,37 +1,23 @@
 <template>
-	<cv-base-crud
-    v-if="resource && action"
-    :cv-resource="resource" 
-    :cv-action="action"
-  > 
+  <div 
+    class="row action-container" 
+  >
     <q-field
-      class="col-md-6 col-lg-5"
+      class="col-sm-9 col-md-10"
       :error="cvErr(errors,'name','boolean')"
       :error-label="cvErr(errors,'name')"
     >
       <q-input 
-        float-label="Nombre"
+        float-label="Valor"
         suffix="" 
-        v-model.trim="row.name"
+        v-model.trim="row.value"
         clearable
         :readonly="cDisableFields"
+        @keydown.enter="setService()"
       />
     </q-field>
     <q-field
-      class="col-md-6 col-lg-5"
-      :error="cvErr(errors,'slug','boolean')"
-      :error-label="cvErr(errors,'slug')"
-    >
-      <q-input 
-        float-label="Slug"
-        suffix="" 
-        v-model.trim="row.slug"
-        clearable
-        :readonly="cDisableFields"
-      />
-    </q-field>
-    <q-field
-      class="col-md-12 col-lg-2"
+      class="col-sm-3 col-md-2"
       :error="cvErr(errors,'active','boolean')"
       :error-label="cvErr(errors,'active')"
     >
@@ -42,29 +28,9 @@
         :readonly="cDisableFields"
       />
     </q-field>
-    <q-field
-      class="col-lg-12"
-      :error="cvErr(errors,'description','boolean')"
-      :error-label="cvErr(errors,'description')"
-    >
-      <q-input 
-        float-label="Descripción"
-        suffix="" 
-        v-model="row.description"
-        type="textarea"
-        :max-height="100"
-        :min-rows="7"
-        clearable
-        :readonly="cDisableFields"
-      />
-    </q-field>
     <div class="col-lg-12 h-50px">
     </div>
-    <div class="col-lg-12">
-      <cv-quasar-buttons :cv-ready="ready" @cv-back="cancelAction()" @cv-next="setService()" :cv-action="action">
-      </cv-quasar-buttons>
-    </div>
-	</cv-base-crud>
+	</div>
 </template>
 <script>
 import CvQuasarBaseCrud from 'crudvuel/customs/components/resource/themes/quasar/CvQuasarBaseCrud.vue';
