@@ -4,8 +4,8 @@
   >
     <q-field
       class="col-sm-9 col-md-10"
-      :error="cvErr(errors,'name','boolean')"
-      :error-label="cvErr(errors,'name')"
+      :error="cvErr(errors,'value','boolean')"
+      :error-label="cvErr(errors,'value')"
     >
       <q-input 
         float-label="Valor"

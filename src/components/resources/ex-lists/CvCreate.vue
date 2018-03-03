@@ -5,33 +5,21 @@
     :cv-action="action"
   > 
     <q-field
-      class="col-md-6 col-lg-5"
-      :error="cvErr(errors,'name','boolean')"
-      :error-label="cvErr(errors,'name')"
+      class="col-sm-9 col-md-10"
+      :error="cvErr(errors,'title','boolean')"
+      :error-label="cvErr(errors,'title')"
     >
       <q-input 
-        float-label="Nombre"
+        float-label="Titulo"
         suffix="" 
-        v-model.trim="row.name"
+        v-model.trim="row.title"
         clearable
         :readonly="cDisableFields"
+        @keydown.enter="setService()"
       />
     </q-field>
     <q-field
-      class="col-md-6 col-lg-5"
-      :error="cvErr(errors,'slug','boolean')"
-      :error-label="cvErr(errors,'slug')"
-    >
-      <q-input 
-        float-label="Slug"
-        suffix="" 
-        v-model.trim="row.slug"
-        clearable
-        :readonly="cDisableFields"
-      />
-    </q-field>
-    <q-field
-      class="col-md-12 col-lg-2"
+      class="col-sm-3 col-md-2"
       :error="cvErr(errors,'active','boolean')"
       :error-label="cvErr(errors,'active')"
     >
@@ -39,22 +27,6 @@
         v-model="row.active" 
         label="Activo" 
         :left-label="true" 
-        :readonly="cDisableFields"
-      />
-    </q-field>
-    <q-field
-      class="col-lg-12"
-      :error="cvErr(errors,'description','boolean')"
-      :error-label="cvErr(errors,'description')"
-    >
-      <q-input 
-        float-label="Descripción"
-        suffix="" 
-        v-model="row.description"
-        type="textarea"
-        :max-height="100"
-        :min-rows="7"
-        clearable
         :readonly="cDisableFields"
       />
     </q-field>

@@ -76,7 +76,7 @@ import 'quasar-extras/material-icons'
 import 'quasar-extras/fontawesome'
 import 'quasar-extras/animate'
 import 'assets/styles.scss'
-console.log(router.VueRouter.options.routes[0].children[14].children)
+//console.log(router.VueRouter.options.routes[0].children[14].children)
 Quasar.start(() => {
   /* eslint-disable no-new */
   new Vue({

@@ -1,65 +1,38 @@
 <template>
 	<cv-base-crud
-    v-if="resource && action"
-    :cv-resource="resource" 
-    :cv-action="action"
-  > 
+	    v-if="resource && action"
+	    :cv-resource="resource" 
+	    :cv-action="action"
+	  > 
     <q-field
-      class="col-md-6 col-lg-5"
-      :error="cvErr(errors,'name','boolean')"
-      :error-label="cvErr(errors,'name')"
+      class="col-sm-9 col-md-10"
+      label="Titulo"
     >
-      <q-input 
-        float-label="Nombre"
-        suffix="" 
-        v-model.trim="row.name"
-        clearable
-        :readonly="cDisableFields"
-      />
+      {{row.title}}
     </q-field>
     <q-field
-      class="col-md-6 col-lg-5"
-      :error="cvErr(errors,'slug','boolean')"
-      :error-label="cvErr(errors,'slug')"
+      class="col-sm-3 col-md-2"
+      label="Activo"
     >
-      <q-input 
-        float-label="Slug"
-        suffix="" 
-        v-model.trim="row.slug"
-        clearable
-        :readonly="cDisableFields"
-      />
+    <q-icon 
+      v-if="row.active" 
+      class="active-icon"
+      name="fa-check" 
+      color="positive"
+      :title="resorceAction('deactivate').label"
+    />
+    <q-icon 
+      v-if="!row.active" 
+      class="active-icon"
+      name="fa-times-circle" 
+      color="negative" 
+      :title="resorceAction('activate').label"
+    />
     </q-field>
-    <q-field
-      class="col-md-12 col-lg-2"
-      :error="cvErr(errors,'active','boolean')"
-      :error-label="cvErr(errors,'active')"
-    >
-      <cv-q-toggle 
-        v-model="row.active" 
-        label="Activo" 
-        :left-label="true" 
-        :readonly="cDisableFields"
-      />
-    </q-field>
-    <q-field
-      class="col-lg-12"
-      :error="cvErr(errors,'description','boolean')"
-      :error-label="cvErr(errors,'description')"
-    >
-      <q-input 
-        float-label="Descripción"
-        suffix="" 
-        v-model="row.description"
-        type="textarea"
-        :max-height="100"
-        :min-rows="7"
-        clearable
-        :readonly="cDisableFields"
-      />
-    </q-field>
-    <div class="col-lg-12">
-      <router-view>
+    <div class="col-lg-12 h-50px">
+    </div>
+    <div class="col-lg-12" v-if="row && row.id">
+      <router-view :ex-list-id="row.id">
       </router-view>
     </div>
     <div class="col-lg-12 h-50px">

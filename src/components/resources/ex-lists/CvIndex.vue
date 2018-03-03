@@ -8,7 +8,7 @@
     <!-- cv-grid-customization-->
     <template v-if="1" slot="headers-slot" slot-scope="props">
         <!-- cv-grid-customization-->
-       <th cv-key="id" class="cv-orderable cv-filterable cv-selectable   t-left t-middle  w-10" >
+       <th cv-key="id" class="cv-orderable cv-filterable cv-selectable   t-left t-middle  w-20" >
           Id
           <cv-ord-icon :cv-data="props.gridData" cv-key="id">
             <q-icon slot="orderable-icon" name="swap_vert" color="secondary"/>
@@ -16,31 +16,15 @@
             <q-icon slot="descending-icon" name="arrow_upward"  color="positive"/>
           </cv-ord-icon>
         </th>
-        <th cv-key="name" class="cv-orderable cv-filterable cv-selectable  t-left t-middle w-22" >
-          Nombre
-          <cv-ord-icon :cv-data="props.gridData" cv-key="name">
+        <th cv-key="title" class="cv-orderable cv-filterable cv-selectable  t-left t-middle w-40" >
+          Titulo
+          <cv-ord-icon :cv-data="props.gridData" cv-key="title">
             <q-icon slot="orderable-icon" name="swap_vert" color="secondary"/>
             <q-icon slot="ascending-icon" name="arrow_downward"  color="primary"/>
             <q-icon slot="descending-icon" name="arrow_upward"  color="positive"/>
           </cv-ord-icon>
         </th>
-        <th cv-key="slug" class="cv-orderable cv-filterable cv-selectable  t-left t-middle w-22" >
-          Slug
-          <cv-ord-icon :cv-data="props.gridData" cv-key="slug">
-            <q-icon slot="orderable-icon" name="swap_vert" color="secondary"/>
-            <q-icon slot="ascending-icon" name="arrow_downward"  color="primary"/>
-            <q-icon slot="descending-icon" name="arrow_upward"  color="positive"/>
-          </cv-ord-icon>
-        </th>
-        <th cv-key="description" class="cv-orderable cv-filterable cv-selectable  t-left t-middle w-22" >
-          Descripción
-          <cv-ord-icon :cv-data="props.gridData" cv-key="description">
-            <q-icon slot="orderable-icon" name="swap_vert" color="secondary"/>
-            <q-icon slot="ascending-icon" name="arrow_downward"  color="primary"/>
-            <q-icon slot="descending-icon" name="arrow_upward"  color="positive"/>
-          </cv-ord-icon>
-        </th>
-        <th cv-key="active" class="cv-orderable cv-filterable cv-selectable  t-center t-middle w-10" >
+        <th cv-key="active" class="cv-orderable cv-filterable cv-selectable  t-center t-middle w-20" >
           Activo
           <cv-ord-icon :cv-data="props.gridData" cv-key="active">
             <q-icon slot="orderable-icon" name="swap_vert" color="secondary"/>
@@ -60,13 +44,7 @@
         {{props.slotRow.id}}
       </td>
       <td>
-        {{props.slotRow.name}} 
-      </td>
-      <td>
-        {{props.slotRow.slug}}
-      </td>
-      <td>
-        {{props.slotRow.description}}
+        {{props.slotRow.title}} 
       </td>
     </template>
     <!-- cv-grid-extra-actions-->
