@@ -86,7 +86,6 @@
                     @keydown.enter="updateItem(gridRow)"
                   />
                 </q-field>
-                {{ready}}
               </td>
             </tr>
           </tbody>
